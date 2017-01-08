@@ -8,6 +8,42 @@
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
+## Why
+
+Getting accurate and complete build version information is crucial for
+quick debugging. For NPM packages, this should include Git commit id and
+module version. This module gets both and saves into a file.
+
+During execution you can load the file using
+[version-middleware](https://github.com/bahmutov/version-middleware) or
+similar module and return the version information.
+
+## Install and use
+
+Best to use in combination with
+[semantic-release](https://github.com/semantic-release/semantic-release).
+
+```sh
+npm i -D built-version
+```
+
+Then run this module right before `NPM publish` command to save a file.
+Change the semantic release script command in `package.json` to
+
+```json
+{
+  "scripts": {
+    "built": "built-version --file build.json",
+    "semantic-release": "semantic-release pre && npm run built && npm publish && semantic-release post"
+  }
+}
+```
+
+If deploying directly from the CI server, add the `build.json` to the
+commit before pushing code. See the
+[Deployed Commit](https://glebbahmutov.com/blog/deployed-commit/) blog post
+on how to do this.
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017

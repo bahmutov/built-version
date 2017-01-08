@@ -27,9 +27,13 @@
     "node": ">=6"
   },
   "files": [
+    "bin",
     "src/*.js",
     "!src/*-spec.js"
   ],
+  "bin": {
+    "built-version": "bin/built-version.js"
+  },
   "homepage": "https://github.com/bahmutov/built-version#readme",
   "keywords": [
     "git",
@@ -54,13 +58,14 @@
     "deps": "deps-ok && dependency-check .",
     "issues": "git-issues",
     "license": "license-checker --production --onlyunknown --csv",
-    "lint": "standard --verbose --fix src/*.js",
+    "lint": "standard --verbose --fix src/*.js bin/*.js",
     "pretest": "npm run lint",
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
     "unit": "mocha src/*-spec.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "built": "node bin/built-version.js --file build.json",
+    "semantic-release": "semantic-release pre && npm run built && npm publish && semantic-release post"
   },
   "devDependencies": {
     "ban-sensitive-files": "1.8.4",
@@ -73,5 +78,13 @@
     "pre-git": "3.12.0",
     "standard": "8.6.0",
     "semantic-release": "^6.3.2"
+  },
+  "dependencies": {
+    "check-more-types": "2.23.0",
+    "commander": "2.9.0",
+    "ggit": "1.13.5",
+    "latest-version-or-tag": "1.2.0",
+    "lazy-ass": "1.5.0",
+    "ramda": "0.23.0"
   }
 }
