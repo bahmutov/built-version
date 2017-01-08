@@ -44,6 +44,12 @@ commit before pushing code. See the
 [Deployed Commit](https://glebbahmutov.com/blog/deployed-commit/) blog post
 on how to do this.
 
+## Related
+
+* [include-version](https://github.com/bahmutov/include-version)
+* [ggit](https://github.com/bahmutov/ggit)
+* [latest-version-or-tag](https://github.com/bahmutov/latest-version-or-tag)
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017
