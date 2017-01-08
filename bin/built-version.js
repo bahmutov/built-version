@@ -29,7 +29,7 @@ function save (sha, version) {
   const write = require('fs').writeFileSync
   const contents = stringify(data)
   write(program.file, contents, 'utf8')
-  console.log('saved built-info into file %s', program.file)
+  console.log('saved built version into file %s', program.file)
 }
 
 Promise.all([getSha, getVersion])
